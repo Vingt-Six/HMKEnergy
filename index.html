@@ -14,6 +14,16 @@
             --secondary-color: #346a0f;
             --white: #FFF;
         }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
         .main-nav {
             display: flex;
             justify-content: space-between;
@@ -25,6 +35,18 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 80px; /* Hauteur fixe pour la navigation */
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            height: 60px; /* Hauteur fixe pour le conteneur du logo */
+        }
+        .logo img {
+            width: 200px;
+            height: 146px;
+            object-fit: contain;
         }
         .hero {
             background-image: url('assets/images/bannerhmk.webp');
@@ -36,6 +58,7 @@
             justify-content: center;
             color: var(--white);
             position: relative;
+            margin-top: 80px; /* Compensation pour la navigation fixe */
         }
         .hero-overlay {
             position: absolute;
@@ -52,6 +75,16 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+            margin-right: 2rem;
+            list-style: none;
+            height: 100%;
+            align-items: center;
         }
     </style>
 
@@ -72,7 +105,7 @@
     <header>
         <nav class="main-nav">
             <div class="logo">
-                <img src="assets/images/LogoHMK.webp" alt="HMK ENERGY Logo">
+                <img src="assets/images/LogoHMK.webp" alt="HMK ENERGY Logo" width="200" height="146">
                 <span>HMK ENERGY</span>
             </div>
             <ul class="nav-links">
