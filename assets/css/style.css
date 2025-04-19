@@ -461,16 +461,15 @@ section {
 /* Contact */
 .contact {
     padding: 6rem 2rem 3rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
+    gap: 3rem;
     margin-top: 2rem;
-    align-items: stretch;
 }
 
 .contact-info {
