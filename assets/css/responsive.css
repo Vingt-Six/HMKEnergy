@@ -1,0 +1,187 @@
+/* Styles pour les tablettes */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .services-grid, .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .process-steps {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+
+    .service-card, .price-card {
+        padding: 2rem;
+    }
+}
+
+/* Styles pour les mobiles */
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem;
+        border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(87, 160, 38, 0.1);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 6rem 1rem;
+        margin-top: 3rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .services-grid, .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-card, .price-card {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+
+    .pricing-category {
+        margin: 0 1rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin: 0 1rem;
+    }
+
+    .faq-container {
+        padding: 0 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Styles pour les très petits écrans */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .service-card, .price-card {
+        padding: 1.5rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .process-step {
+        padding: 1.5rem;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .social-links a {
+        font-size: 1.3rem;
+    }
+}
+
+/* Animation pour les éléments qui apparaissent au scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+} 
