@@ -1,36 +1,50 @@
-// Menu mobile
+// Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // Pré-initialiser les états pour éviter les décalages
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
+    initNavigation();
+    initAnimations();
+    initPricingFilters();
+});
+
+// Navigation
+function initNavigation() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    // Pré-initialiser la navigation
-    if (navLinks) {
-        navLinks.style.transition = 'none';
-        navLinks.style.display = 'flex';
-        requestAnimationFrame(() => {
-            navLinks.style.transition = '';
+    if (menuToggle && navLinks) {
+        // Gestion du clic sur le menu burger
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
-    }
 
-    menuToggle?.addEventListener('click', function() {
-        requestAnimationFrame(() => {
-            navLinks?.classList.toggle('active');
-        });
-    });
-
-    // Fermer le menu quand on clique sur un lien
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            requestAnimationFrame(() => {
-                navLinks?.classList.remove('active');
+        // Fermer le menu lors du clic sur un lien
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
             });
         });
-    });
 
-    // Animation au scroll avec IntersectionObserver optimisé
+        // Fermer le menu lors du clic en dehors
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
+        // Fermer le menu lors du défilement
+        window.addEventListener('scroll', function() {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Animations
+function initAnimations() {
     const animatedElements = document.querySelectorAll('.service-card, .price-card, .testimonial, .process-step, .info-card');
     
     const observerOptions = {
@@ -51,13 +65,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Pré-initialiser les éléments animés
-    requestAnimationFrame(() => {
-        animatedElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
-            observer.observe(element);
+    animatedElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+        observer.observe(element);
+    });
+}
+
+// Filtres de prix
+function initPricingFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const pricingCards = document.querySelectorAll('.pricing-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            pricingCards.forEach(card => {
+                if (filter === 'all' || card.classList.contains(filter)) {
+                    card.classList.remove('hidden');
+                    card.classList.add('visible');
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                }
+            });
         });
     });
-}); 
+} 
