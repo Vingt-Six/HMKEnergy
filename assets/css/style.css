@@ -1871,7 +1871,39 @@ footer {
 
     .pricing-info {
         padding: 1.5rem;
-        margin: 1.5rem;
+        margin: 1rem auto;
+        width: 95%;
+        border-radius: 10px;
+    }
+
+    .pricing-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .pricing-info p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .pricing-info strong,
+    .pricing-info .highlight {
+        font-size: 0.95rem;
+        padding: 0.1rem 0.3rem;
+        display: inline;
+        background: rgba(87, 160, 38, 0.08);
+    }
+
+    .pricing-info .important {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 1rem 0;
+        line-height: 1.4;
+        border-radius: 6px;
+        border-left-width: 3px;
     }
 
     .contact-container {
@@ -1881,6 +1913,32 @@ footer {
     .form-row {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .pricing-section {
+        padding: 3rem 1rem;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .pricing-card {
+        width: 95%;
+        margin: 0 auto;
+        max-width: none;
+    }
+
+    .pricing-filters {
+        width: 95%;
+        margin: 2rem auto;
+    }
+
+    .pricing-info {
+        width: 95%;
+        margin: 2rem auto;
     }
 }
 
