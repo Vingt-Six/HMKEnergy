@@ -97,6 +97,12 @@ function initPricingFilters() {
             });
         });
     });
+
+    // Déclencher le filtre "appartement" par défaut au chargement
+    const defaultFilter = document.querySelector('.filter-btn[data-filter="appartement"]');
+    if (defaultFilter) {
+        defaultFilter.click();
+    }
 }
 
 // Prix des certificats PEB
