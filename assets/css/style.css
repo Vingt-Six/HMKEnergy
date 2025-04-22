@@ -1287,14 +1287,36 @@ footer {
 @media (min-width: 769px) {
     .hero-tarifs {
         height: 400px;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        contain: layout paint;
     }
 
     .hero-tarifs::before {
         background-image: url('../images/tarifsBanner.webp');
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    .hero-tarifs .hero-content {
+        transform: translateZ(0);
+        max-width: 1200px;
+        padding: 0 2rem;
     }
 
     .hero-tarifs h1 {
         font-size: 3.5rem;
+        transform: translateZ(0);
+        letter-spacing: -0.5px;
+    }
+}
+
+/* Optimisations générales pour desktop */
+@media (min-width: 1200px) {
+    .hero-tarifs::before {
+        background-attachment: fixed;
+        will-change: transform;
     }
 }
 
