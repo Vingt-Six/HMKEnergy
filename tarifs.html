@@ -6,11 +6,18 @@
     <meta name="description" content="Découvrez nos tarifs pour la certification PEB à Bruxelles. Prix transparents et compétitifs pour maisons, appartements et immeubles. Devis gratuit.">
     <title>Tarifs - HMK ENERGY</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/images/LogoHMK.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="assets/images/tarifsBanner-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="assets/images/tarifsBanner.webp" as="image" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+    
+    <!-- Critical CSS -->
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preload" href="assets/images/tarifsBanner.webp" as="image" type="image/webp">
-    <link rel="preload" href="assets/images/tarifsBanner-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)">
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body>
     <!-- Navigation -->
@@ -36,7 +43,7 @@
     <!-- Hero Section -->
     <section class="hero-tarifs">
         <div class="hero-content">
-            <h1>Nos tarifs de certification PEB</h1>
+            <h1>Nos tarifs</h1>
         </div>
     </section>
 

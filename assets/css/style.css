@@ -1231,7 +1231,7 @@ footer {
 .hero-tarifs {
     background-color: var(--primary-color);
     margin-top: 80px;
-    height: 400px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1240,6 +1240,7 @@ footer {
     position: relative;
     will-change: transform;
     content-visibility: auto;
+    contain: paint layout;
 }
 
 .hero-tarifs::before {
@@ -1249,12 +1250,13 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../images/tarifsBanner.webp');
+    background-image: url('../images/tarifsBanner-mobile.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
     opacity: 1;
+    will-change: opacity;
 }
 
 .hero-tarifs::after {
@@ -1264,26 +1266,36 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(5, 26, 2, 0.9), rgba(5, 26, 2, 0.9));
+    background: linear-gradient(rgba(5, 26, 2, 0.95), rgba(5, 26, 2, 0.95));
     z-index: 1;
 }
 
 .hero-tarifs .hero-content {
     position: relative;
     z-index: 2;
-    opacity: 1;
+    padding: 0 1rem;
+    max-width: 800px;
 }
 
 .hero-tarifs h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
 }
 
-.hero-tarifs p {
-    font-size: 1.5rem;
-    opacity: 0.9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+@media (min-width: 769px) {
+    .hero-tarifs {
+        height: 400px;
+    }
+
+    .hero-tarifs::before {
+        background-image: url('../images/tarifsBanner.webp');
+    }
+
+    .hero-tarifs h1 {
+        font-size: 3.5rem;
+    }
 }
 
 /* Pricing Section */
