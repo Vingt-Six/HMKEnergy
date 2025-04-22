@@ -1229,7 +1229,7 @@ footer {
 
 /* Hero Tarifs */
 .hero-tarifs {
-    background: linear-gradient(rgba(5, 26, 2, 0.8), rgba(5, 26, 2, 0.8)), url('../images/tarifsBanner.jpg');
+    background: linear-gradient(rgba(5, 26, 2, 0.8), rgba(5, 26, 2, 0.8)), url('../images/tarifsBanner.webp');
     background-size: cover;
     background-position: center;
     height: 400px;
