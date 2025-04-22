@@ -145,10 +145,7 @@ html {
 
 /* Section Hero */
 .hero {
-    background-image: url('../images/bannerhmk.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: var(--primary-color);
     color: var(--white);
     padding: 0 5%;
     text-align: center;
@@ -159,6 +156,24 @@ html {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    will-change: transform;
+    content-visibility: auto;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/bannerhmk.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
 }
 
 .hero-overlay {
@@ -180,6 +195,7 @@ html {
     z-index: 2;
     max-width: 800px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .hero-content h1 {
@@ -212,6 +228,12 @@ html {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
     }
 }
 
@@ -1765,19 +1787,28 @@ footer {
         display: none;
     }
 
-    .hero, .hero-services, .hero-tarifs {
-        padding: 6rem 1rem;
-        margin-top: 3rem;
+    .hero {
         height: auto;
-        min-height: 300px;
+        min-height: 60vh;
+        margin-top: 70px;
+    }
+
+    .hero::before {
+        background-image: url('../images/bannerhmk-mobile.webp');
+    }
+
+    .hero-content {
+        padding: 3rem 1rem;
     }
 
     .hero-content h1 {
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     .hero-content p {
         font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
     .services-grid, .pricing-grid {
