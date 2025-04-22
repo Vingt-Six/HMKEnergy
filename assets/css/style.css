@@ -1257,6 +1257,7 @@ footer {
     z-index: 0;
     opacity: 1;
     will-change: opacity;
+    transform: translateZ(0);
 }
 
 .hero-tarifs::after {
