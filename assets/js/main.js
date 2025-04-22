@@ -1,11 +1,23 @@
 // Menu mobile
 document.addEventListener('DOMContentLoaded', function() {
+    // Pré-initialiser les états pour éviter les décalages
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', function() {
+    
+    // Pré-initialiser la navigation
+    if (navLinks) {
+        navLinks.style.transition = 'none';
+        navLinks.style.display = 'flex';
         requestAnimationFrame(() => {
-            navLinks.classList.toggle('active');
+            navLinks.style.transition = '';
+        });
+    }
+
+    menuToggle?.addEventListener('click', function() {
+        requestAnimationFrame(() => {
+            navLinks?.classList.toggle('active');
         });
     });
 
@@ -13,38 +25,38 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             requestAnimationFrame(() => {
-                navLinks.classList.remove('active');
+                navLinks?.classList.remove('active');
             });
         });
     });
 
-    // Animation au scroll avec IntersectionObserver
+    // Animation au scroll avec IntersectionObserver optimisé
     const animatedElements = document.querySelectorAll('.service-card, .price-card, .testimonial, .process-step, .info-card');
     
     const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '50px'
+        threshold: 0.1,
+        rootMargin: '50px 0px',
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                const target = entry.target;
                 requestAnimationFrame(() => {
-                    entry.target.classList.add('fade-in');
+                    target.style.transform = 'translateY(0)';
+                    target.style.opacity = '1';
                 });
-                observer.unobserve(entry.target); // Arrêter d'observer une fois animé
+                observer.unobserve(target);
             }
         });
     }, observerOptions);
 
-    // Regrouper les lectures DOM
-    const elementsToAnimate = Array.from(animatedElements);
-    
-    // Regrouper les écritures DOM
+    // Pré-initialiser les éléments animés
     requestAnimationFrame(() => {
-        elementsToAnimate.forEach(element => {
+        animatedElements.forEach(element => {
             element.style.opacity = '0';
-            element.classList.add('fade-in');
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
             observer.observe(element);
         });
     });
