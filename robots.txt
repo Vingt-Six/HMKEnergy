@@ -1,0 +1,14 @@
+# robots.txt pour https://hmkenergy.be
+
+User-agent: *
+Disallow: /scripts/
+Disallow: /styles/
+Allow: /assets/images/LogoHMK.webp
+Allow: /assets/images/service.webp
+Allow: /assets/images/image_service.webp
+Allow: /assets/images/tarifsBanner.webp
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Sitemap
+Sitemap: https://hmkenergy.be/sitemap.xml 
