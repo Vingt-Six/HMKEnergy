@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initAnimations();
     initPricingFilters();
+    initContactForm();
 });
 
 // Navigation
@@ -96,4 +97,89 @@ function initPricingFilters() {
             });
         });
     });
+}
+
+// Prix des certificats PEB
+const pricingData = {
+    appartement: {
+        "0-50": { htva: 99, tvac: 120 },
+        "51-75": { htva: 136, tvac: 165 },
+        "76-100": { htva: 145, tvac: 175 },
+        ">100": { htva: 169, tvac: 205 }
+    },
+    maison: {
+        "<150": { htva: 186, tvac: 225 },
+        "150-250": { htva: 202, tvac: 245 },
+        ">250": { htva: 219, tvac: 265 }
+    },
+    immeuble: {
+        "par-appartement": { htva: "Prix du certificat d'un appartement + 120 € par appartement", tvac: "Prix du certificat d'un appartement + 120 € par appartement" }
+    }
+};
+
+// Gestion du formulaire de contact
+function initContactForm() {
+    const buildingTypeSelect = document.getElementById('buildingType');
+    const surfaceSelect = document.getElementById('surface');
+    const estimatedPriceSpan = document.getElementById('estimatedPrice');
+
+    if (buildingTypeSelect && surfaceSelect) {
+        buildingTypeSelect.addEventListener('change', function() {
+            // Réinitialiser le select de superficie
+            surfaceSelect.innerHTML = '<option value="">Sélectionnez une superficie</option>';
+            surfaceSelect.disabled = false;
+
+            // Ajouter les options de superficie selon le type de bâtiment
+            const selectedType = this.value;
+            const surfaces = getSurfacesForType(selectedType);
+            
+            surfaces.forEach(surface => {
+                const option = document.createElement('option');
+                option.value = surface;
+                option.textContent = getSurfaceLabel(selectedType, surface);
+                surfaceSelect.appendChild(option);
+            });
+
+            // Réinitialiser le prix estimé
+            estimatedPriceSpan.textContent = '-';
+        });
+
+        surfaceSelect.addEventListener('change', function() {
+            const selectedType = buildingTypeSelect.value;
+            const selectedSurface = this.value;
+            
+            if (selectedType && selectedSurface) {
+                const price = pricingData[selectedType][selectedSurface];
+                if (price) {
+                    estimatedPriceSpan.textContent = `${price.tvac} € TVAC`;
+                }
+            }
+        });
+    }
+}
+
+function getSurfacesForType(type) {
+    switch(type) {
+        case 'appartement':
+            return ['0-50', '51-75', '76-100', '>100'];
+        case 'maison':
+            return ['<150', '150-250', '>250'];
+        case 'immeuble':
+            return ['par-appartement'];
+        default:
+            return [];
+    }
+}
+
+function getSurfaceLabel(type, surface) {
+    switch(type) {
+        case 'appartement':
+            return surface === '>100' ? 'Plus de 100 m²' : `${surface} m²`;
+        case 'maison':
+            return surface === '>250' ? 'Plus de 250 m²' : `${surface} m²`;
+        case 'immeuble':
+            return 'Certificat par appartement';
+        default:
+            return surface;
+    }
 } 

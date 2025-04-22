@@ -53,24 +53,51 @@
             <!-- Formulaire de contact -->
             <div class="contact-form">
                 <h2>Besoin d'un certificat PEB ?</h2>
-                <p class="form-description">Remplissez le formulaire, et nous vous recontacterons rapidement.</p>
+                <p>Remplissez le formulaire, et nous vous recontacterons rapidement.</p>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nom complet</label>
                         <input type="text" id="name" name="name" required placeholder="Votre nom">
                     </div>
+
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required placeholder="Votre email">
                     </div>
+
                     <div class="form-group">
                         <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="Votre numéro">
+                        <input type="tel" id="phone" name="phone" required placeholder="Votre numéro de téléphone">
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group select-wrapper">
+                            <label for="buildingType">Type de bâtiment</label>
+                            <select id="buildingType" name="buildingType" required>
+                                <option value="">Sélectionnez un type</option>
+                                <option value="appartement">Appartement</option>
+                                <option value="maison">Maison</option>
+                                <option value="immeuble">Immeuble</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group select-wrapper">
+                            <label for="surface">Superficie (m²)</label>
+                            <select id="surface" name="surface" required disabled>
+                                <option value="">Sélectionnez d'abord le type de bâtiment</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" required placeholder="Votre message"></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder="Votre message"></textarea>
                     </div>
+
+                    <div class="price-estimate">
+                        <p>Prix estimé : <span id="estimatedPrice">-</span></p>
+                    </div>
+
                     <button type="submit" class="cta-button">Envoyer la demande</button>
                 </form>
             </div>
