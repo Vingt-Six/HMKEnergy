@@ -1229,22 +1229,49 @@ footer {
 
 /* Hero Tarifs */
 .hero-tarifs {
-    background: linear-gradient(rgba(5, 26, 2, 0.8), rgba(5, 26, 2, 0.8)), url('../images/tarifsBanner.webp');
-    background-size: cover;
-    background-position: center;
+    background-color: var(--primary-color);
+    margin-top: 80px;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 80px;
     position: relative;
+    will-change: transform;
+    content-visibility: auto;
+}
+
+.hero-tarifs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/tarifsBanner.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 1;
+}
+
+.hero-tarifs::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(5, 26, 2, 0.9), rgba(5, 26, 2, 0.9));
+    z-index: 1;
 }
 
 .hero-tarifs .hero-content {
     position: relative;
     z-index: 2;
+    opacity: 1;
 }
 
 .hero-tarifs h1 {
@@ -1939,6 +1966,18 @@ footer {
     .pricing-info {
         width: 95%;
         margin: 2rem auto;
+    }
+
+    .hero-tarifs {
+        height: 300px;
+    }
+
+    .hero-tarifs::before {
+        background-image: url('../images/tarifsBanner-mobile.webp');
+    }
+
+    .hero-tarifs h1 {
+        font-size: 2rem;
     }
 }
 
